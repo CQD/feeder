@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Q\\Feeder\\": "src/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "nikic/fast-route": "^1.3"
+    }
+}

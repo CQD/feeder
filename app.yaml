@@ -1,0 +1,7 @@
+runtime: php72
+
+handlers:
+
+- url: /.*
+  script: auto
+  secure: always
