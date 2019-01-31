@@ -35,7 +35,7 @@ class IssueCommentController extends ControllerBase
                 return [
                     'title' => "Re: " . ($issue['title'] ?: '?????'),
                     'url' => $comment['html_url'],
-                    'body' => $comment['body'],
+                    'body' => nl2br($comment['body']),
                     'guid' => $comment['html_url'],
                     'time' => strtotime($comment['created_at']),
                 ];
