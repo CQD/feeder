@@ -11,7 +11,6 @@ abstract class ControllerBase
 
     public function run($params)
     {
-        global $data;
         try {
             $data = $this->logic($params);
             ob_start();
