@@ -19,6 +19,14 @@ class IndexController extends ControllerBase
   - 某個 Repo 的所有 Issue/PR 的回應
   - 例如：https://feed.cqd.tw/github/repo/composer/composer/issuecomment
 
+## Vocus
+
+- /vocus/user/{id}
+  - 某個專題的最新文章
+  - 例如：https://feed.cqd.tw/vocus/user/sophist4ever
+- /vocus/publication/{id}
+  - 某個專題的最新文章
+  - 例如：https://feed.cqd.tw/vocus/publication/sophist4ever
 EOT;
     }
 

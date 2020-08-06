@@ -37,6 +37,8 @@ function getRouteConfig()
 {
     return [
         '/github/repo/{user}/{repo}/issuecomment' => 'IssueCommentController',
+        '/vocus/user/{user}'       => 'VocusUserController',
+        '/vocus/publication/{id}'  => 'VocusPublicationController',
         '/' => 'IndexController',
     ];
 }
