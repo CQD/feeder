@@ -8,7 +8,6 @@ use GuzzleHttp\Promise;
 abstract class ControllerBase
 {
     protected $httpCache = [];
-    protected $credential = null;
 
     public function run($params)
     {
@@ -37,21 +36,14 @@ abstract class ControllerBase
         }
     }
 
-    protected function get($url, $query = []):? array
+    protected function get($url, $query = [], $options = []):? array
     {
-        $this->prepareCredential();
-
         $cacheKey = $url . '|' . json_encode($query);
         if ($cachedData = $this->httpCache[$cacheKey] ?? null) {
             return $cachedData;
         }
 
-        $http = new HttpClient([
-            'auth' => [
-                $this->credential['github']['user'],
-                $this->credential['github']['token'],
-            ],
-        ]);
+        $http = new HttpClient($options);
         $response = $http->get($url, [
             'query' => $query,
         ]);
@@ -61,16 +53,9 @@ abstract class ControllerBase
         return $data;
     }
 
-    protected function getMulti($reqs)
+    protected function getMulti($reqs, $options = [])
     {
-        $this->prepareCredential();
-
-        $http = new HttpClient([
-            'auth' => [
-                $this->credential['github']['user'],
-                $this->credential['github']['token'],
-            ],
-        ]);
+        $http = new HttpClient($options);
         $promises = [];
         foreach ($reqs as $req) {
             $url = is_string($req) ? $req : $req['url'];
@@ -96,23 +81,13 @@ abstract class ControllerBase
         return $datas;
     }
 
-    protected function prepareCredential()
+    protected function readCredential(string $name) : ?array
     {
-        if ($this->credential) {
-            return;
+        $file = __DIR__ . "/../../credential/{$name}.json";
+        if (!is_file($file)) {
+            throw new \Exception("Credential file `{$name}.json` not found!");
         }
-        $this->credential = [];
-
-        $list = [
-            'github',
-        ];
-        foreach ($list as $name) {
-            $file = __DIR__ . "/../../credential/{$name}";
-            if (!is_file($file)) {
-                throw new \Exception("Credential file for `{$name}` not found!");
-            }
-            $this->credential[$name] = json_decode(file_get_contents($file), true);
-        }
+        return json_decode(file_get_contents($file), true) ?: null;
     }
 
     abstract public function logic(array $params):array;

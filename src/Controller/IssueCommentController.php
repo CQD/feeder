@@ -13,15 +13,23 @@ class IssueCommentController extends ControllerBase
             urlencode($repo)
         );
 
+        $credential = $this->readCredential('github');
+        $options = [
+            'auth' => [
+                $credential['user'],
+                $credential['token'],
+            ],
+        ];
+
         $data = $this->get($url, [
             'direction' => 'desc',
             'sort' => 'created_at',
-        ]);
+        ], $options);
 
         $issueReqs = array_map(function($comment){
             return $comment['issue_url'];
         }, $data);
-        $this->getMulti($issueReqs);
+        $this->getMulti($issueReqs, $options);
 
         return [
             'title' => "Github 上 {$user}/{$repo} 的最新 issue 回應",
