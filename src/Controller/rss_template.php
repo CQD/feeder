@@ -19,6 +19,8 @@ function timeFormat($time)
     return date('r', $time);
 }
 
+header('Content-Type: application/rss+xml; charset=utf-8');
+
 echo '<' . '?';  ?>xml version='1.0' encoding='UTF-8'<?php echo '?'.'>' ?>
 <rss version='2.0'>
 <channel>
