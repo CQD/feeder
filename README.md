@@ -13,7 +13,7 @@
 ## Vocus
 
 - /vocus/user/{id}
-  - 某個專題的最新文章
+  - 某個作者的最新文章
   - 例如：https://feed.cqd.tw/vocus/user/sophist4ever
 - /vocus/publication/{id}
   - 某個專題的最新文章
