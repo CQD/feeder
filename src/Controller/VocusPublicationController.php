@@ -20,6 +20,7 @@ class VocusPublicationController extends ControllerBase
         ]);
 
         return [
+            'lang' => 'zh-TW',
             'title' => "{$publication['title']} / Vocus 專題",
             'desc' => strip_tags($publication['abstract']),
             'link' => sprintf("https://vocus.cc/%s/home",

@@ -20,6 +20,7 @@ class VocusUserController extends ControllerBase
         ]);
 
         return [
+            'lang' => 'zh-TW',
             'title' => "{$user['fullname']} / Vocus 作者",
             'desc' => strip_tags($user['intro']),
             'link' => sprintf("https://vocus.cc/user/@%s",
