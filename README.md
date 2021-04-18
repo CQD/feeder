@@ -2,7 +2,8 @@
 
 有些東西沒有 RSS Feed，但是我想訂閱，所以自己寫。
 
-服務網址：https://feed.cqd.tw
+- 服務網址：https://feed.cqd.tw
+- 程式碼：https://github.com/CQD/feeder
 
 ## Github
 
