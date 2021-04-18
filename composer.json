@@ -6,6 +6,7 @@
     },
     "require": {
         "guzzlehttp/guzzle": "^6.3",
-        "nikic/fast-route": "^1.3"
+        "nikic/fast-route": "^1.3",
+        "qlurk/qlurk": "^0.2.3"
     }
 }
