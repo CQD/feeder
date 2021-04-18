@@ -29,6 +29,7 @@ echo '<' . '?';  ?>xml version='1.0' encoding='UTF-8'<?php echo '?'.'>' ?>
 <link><?= e($link ?? '') ?></link>
 <description><?= e($desc ?? "CQD's aggregated RSS") ?></description>
 <language><?= e($lang ?? 'en-us')?></language>
+<generator>https://feed.cqd.tw</generator>
 
 <?php foreach ($items as $item): ?>
 <item>
