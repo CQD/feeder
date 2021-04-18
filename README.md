@@ -26,4 +26,4 @@
   - 用搜尋功能找到符合關鍵字的噗，僅包含公開噗
   - 範例
     - https://feed.cqd.tw/plurk/search/Love
-    - https://feed.cqd.tw/plurk/search/%E7%B3%9F%E7%B3%95%E7%89%A9 (糟糕物)
+    - https://feed.cqd.tw/plurk/search/%E6%84%9B%E6%83%85 (愛情)
