@@ -8,7 +8,7 @@ installNoDev:
 installWithDev:
 	-composer install -o
 
-deploy: installNoDev
+deploy: installNoDev credential/plurk.php
 	gcloud app deploy -v 'prod' --project='feeder-230308' --promote --stop-previous-version $(OPTIONS)
 	@$(MAKE) post-deploy
 
@@ -21,3 +21,6 @@ post-deploy:
 
 server: installWithDev
 	php -S localhost:8080 -t public/
+
+credential/plurk.php:
+	echo "噗浪功能需要的 credential 檔案 $@ 不存在!" && false

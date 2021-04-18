@@ -39,6 +39,7 @@ function getRouteConfig()
         '/github/repo/{user}/{repo}/issuecomment' => 'IssueCommentController',
         '/vocus/user/{user}'       => 'VocusUserController',
         '/vocus/publication/{id}'  => 'VocusPublicationController',
+        '/plurk/search/{keyword}'  => 'PlurkSearchController',
         '/' => 'IndexController',
     ];
 }
