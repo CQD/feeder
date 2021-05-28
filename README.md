@@ -27,3 +27,10 @@
   - 範例
     - https://feed.cqd.tw/plurk/search/Love
     - https://feed.cqd.tw/plurk/search/%E6%84%9B%E6%83%85 (愛情)
+
+## 台灣電力企業聯合會
+
+- /tepa/epaper
+  - 台灣電力企業聯合會電子報
+  - 範例
+    - https://feed.cqd.tw/tepa/epaper

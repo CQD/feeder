@@ -40,6 +40,7 @@ function getRouteConfig()
         '/vocus/user/{user}'       => 'VocusUserController',
         '/vocus/publication/{id}'  => 'VocusPublicationController',
         '/plurk/search/{keyword}'  => 'PlurkSearchController',
+        '/tepa/epaper'  => 'TepaEpaperController',
         '/' => 'IndexController',
     ];
 }
