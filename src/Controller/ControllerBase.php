@@ -37,6 +37,12 @@ abstract class ControllerBase
 
     protected function get($url, $query = [], $options = []):? array
     {
+        $body = $this->getRaw($url, $query, $options);
+        return json_decode($body, true);
+    }
+
+    protected function getRaw($url, $query = [], $options = []):? string
+    {
         $cacheKey = $url . '|' . json_encode($query);
         if ($cachedData = $this->httpCache[$cacheKey] ?? null) {
             return $cachedData;
@@ -48,8 +54,8 @@ abstract class ControllerBase
         ]);
 
         $body = $response->getBody();
-        $data = $this->httpCache[$cacheKey] = json_decode($body, true);
-        return $data;
+        $this->httpCache[$cacheKey] = $body;
+        return $body;
     }
 
     protected function getMulti($reqs, $options = [])
