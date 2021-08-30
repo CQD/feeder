@@ -48,9 +48,18 @@ abstract class ControllerBase
             return $cachedData;
         }
 
+        $options += [
+            'request.options' => [
+                'exceptions' => false,
+            ],
+        ];
+
         $http = new HttpClient($options);
         $response = $http->get($url, [
             'query' => $query,
+            'headers' => [
+                'User-Agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/92.0.4515.90 Mobile/15E148 Safari/604.1',
+            ],
         ]);
 
         $body = $response->getBody();
@@ -60,7 +69,15 @@ abstract class ControllerBase
 
     protected function getMulti($reqs, $options = [])
     {
+        $options += [
+            'request.options' => [
+                'exceptions' => false,
+            ],
+        ];
         $http = new HttpClient($options);
+        $http->setDefaultOption('headers', [
+            'User-Agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/92.0.4515.90 Mobile/15E148 Safari/604.1',
+        ]);
         $promises = [];
         foreach ($reqs as $req) {
             $url = is_string($req) ? $req : $req['url'];
@@ -81,6 +98,7 @@ abstract class ControllerBase
         foreach ($results as $cacheKey => $result) {
             $body = $result['value']->getBody();
             $datas[$cacheKey] = $this->httpCache[$cacheKey] = json_decode($body, true);
+            $datas[$cacheKey]['_extra'] = $result;
         }
 
         return $datas;

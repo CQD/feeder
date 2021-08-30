@@ -9,7 +9,7 @@
 
 - /github/repo/{user}/{repo}/issuecomment
   - 某個 Repo 的所有 Issue/PR 的回應
-  - 例如：https://feed.cqd.tw/github/repo/composer/composer/issuecomment
+  - 範例：https://feed.cqd.tw/github/repo/composer/composer/issuecomment
 
 ## Vocus
 
@@ -18,7 +18,7 @@
   - 例如：https://feed.cqd.tw/vocus/user/sophist4ever
 - /vocus/publication/{id}
   - 某個專題的最新文章
-  - 例如：https://feed.cqd.tw/vocus/publication/sophist4ever
+  - 範例：https://feed.cqd.tw/vocus/publication/sophist4ever
 
 ## 噗浪 Plurk
 
@@ -32,5 +32,9 @@
 
 - /tepa/epaper
   - 台灣電力企業聯合會電子報
-  - 範例
-    - https://feed.cqd.tw/tepa/epaper
+  - 範例：https://feed.cqd.tw/tepa/epaper
+
+## 591
+- /591/comu/{建案id}
+  - 指定建案的最近上架物件
+  - 範例：https://feed.cqd.tw/591/comu/4055
