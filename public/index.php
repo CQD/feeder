@@ -17,17 +17,3 @@ if (!$controller) {
 } else {
     (new $controller)->run($params);
 }
-
-
-//////////////////////////////////////////
-
-function e($text, $type = 'html')
-{
-    $funcs = [
-        'html' => 'htmlspecialchars',
-        'js' => 'json_encode',
-        'raw' => 'strval',
-    ];
-
-    return $funcs[$type]($text);
-}
