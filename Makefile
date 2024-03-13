@@ -1,4 +1,4 @@
-.PHONY: deploy installNoDev installWithDev deploy soft-deploy server credential
+.PHONY: deploy installNoDev installWithDev deploy soft-deploy server credential test
 
 OPTIONS?=
 
@@ -17,6 +17,8 @@ soft-deploy: installNoDev
 server: installWithDev
 	php -S localhost:8080 -t public/
 
+test: installWithDev
+	vendor/bin/phpunit --color --testdox tests
 
 ##############################
 
