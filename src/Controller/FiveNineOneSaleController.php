@@ -50,7 +50,7 @@ EOT;
                     e($sale['area_v']['area']),
                     e($sale['area_v']['unit']),
                     e($sale['address']),
-                    $timeFromImage ? date('Y-m-d H:i:s', $timeFromImage) : '未知'
+                    $timeFromImage ? date('Y-m-d H:i:s', (int) $timeFromImage) : '未知'
                 );
                 return [
                     'title' => sprintf("[%s] %s | %s | %s%s | %s%s",
