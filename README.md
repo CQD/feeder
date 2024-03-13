@@ -5,6 +5,14 @@
 - 服務網址：https://feed.cqd.tw
 - 程式碼：https://github.com/CQD/feeder
 
+## PTT
+- /ptt/{看板_ID}/title/{regex}
+  - 看板文章依照 regex 過濾標題，無視大小寫
+  - 範例：https://feed.cqd.tw/ptt/Gamesale/title/PS5.%2A%E4%B8%BB%E6%A9%9F (Gamesale 板標題符合 `PS5.*主機` 的文章)
+
+另，PTT 內建有
+- 看板 ATOM feed https://www.ptt.cc/atom/{看板_ID}.xml
+
 ## Github
 
 - /github/repo/{user}/{repo}/issuecomment
@@ -27,6 +35,9 @@
   - 範例
     - https://feed.cqd.tw/plurk/search/Love
     - https://feed.cqd.tw/plurk/search/%E6%84%9B%E6%83%85 (愛情)
+
+另，噗浪內建有
+- 使用者的公開噗 https://www.plurk.com/{nick_name}.xml
 
 ## 台灣電力企業聯合會
 

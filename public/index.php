@@ -45,6 +45,7 @@ function getRouteConfig()
         '/vocus/publication/{id}'  => 'VocusPublicationController',
         '/plurk/search/{keyword}'  => 'PlurkSearchController',
         '/tepa/epaper'  => 'TepaEpaperController',
+        '/ptt/{board}/title/{regex}'  => 'PttTitleController',
         '/591/comu/{id}'  => 'FiveNineOneSaleController',
         '/' => 'IndexController',
     ];

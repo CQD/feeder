@@ -4,6 +4,7 @@ namespace Q\Feeder\Controller;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Promise;
+use SimpleXMLElement;
 
 abstract class ControllerBase
 {
@@ -39,6 +40,12 @@ abstract class ControllerBase
     {
         $body = $this->getRaw($url, $query, $options);
         return json_decode($body, true);
+    }
+
+    protected function getXML($url, $query = [], $options = []):? SimpleXMLElement
+    {
+        $body = $this->getRaw($url, $query, $options);
+        return simplexml_load_string($body) ?: null;
     }
 
     protected function getRaw($url, $query = [], $options = []):? string
