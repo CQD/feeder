@@ -1,10 +1,12 @@
 <?php
 
+use Q\Feeder\Router;
+
 include __DIR__ . '/../vendor/autoload.php';
 
 date_default_timezone_set('Asia/Taipei');
 
-list($controller, $params) = route($argv[1] ?? $_SERVER['REQUEST_URI']);
+list($controller, $params) = Router::route($argv[1] ?? $_SERVER['REQUEST_URI']);
 
 foreach ($params as $k => $v) {
     $params[$k] = urldecode($v);
@@ -18,38 +20,6 @@ if (!$controller) {
 
 
 //////////////////////////////////////////
-
-function route($path){
-    $routes = getRouteConfig();
-    $dispatcher = \FastRoute\simpleDispatcher(function(\FastRoute\RouteCollector $r) use ($routes) {
-        foreach ($routes as $path => $controller) {
-            $r->addRoute('GET', $path, $controller);
-        }
-    });
-
-    $routeInfo = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'] ?? 'GET', $path);
-    switch ($routeInfo[0]) {
-    case FastRoute\Dispatcher::FOUND:
-        $controller = "\\Q\\Feeder\\Controller\\{$routeInfo[1]}";
-        return [$controller, $routeInfo[2]];
-    default:
-        return [null, null];
-    }
-}
-
-function getRouteConfig()
-{
-    return [
-        '/github/repo/{user}/{repo}/issuecomment' => 'IssueCommentController',
-        '/vocus/user/{user}'       => 'VocusUserController',
-        '/vocus/publication/{id}'  => 'VocusPublicationController',
-        '/plurk/search/{keyword}'  => 'PlurkSearchController',
-        '/tepa/epaper'  => 'TepaEpaperController',
-        '/ptt/{board}/title/{regex}'  => 'PttTitleController',
-        '/591/comu/{id}'  => 'FiveNineOneSaleController',
-        '/' => 'IndexController',
-    ];
-}
 
 function e($text, $type = 'html')
 {
