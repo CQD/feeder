@@ -15,3 +15,8 @@
 
 # PHP Composer dependencies:
 vendor/
+
+# 測試
+/tests/
+/phpunit.xml
+.phpunit.result.cache
