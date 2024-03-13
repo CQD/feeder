@@ -1,26 +1,26 @@
-.PHONY: deploy installNoDev installWithDev deploy soft-deploy server post-deploy
+.PHONY: deploy installNoDev installWithDev deploy soft-deploy server credential
 
 OPTIONS?=
 
-installNoDev:
+installNoDev: credential
 	-composer install -o --no-dev
 
-installWithDev:
+installWithDev: credential
 	-composer install -o
 
-deploy: installNoDev credential/plurk.php
-	gcloud app deploy -v 'prod' --project='feeder-230308' --promote --stop-previous-version $(OPTIONS)
-	@$(MAKE) post-deploy
+deploy: installNoDev credential
+	gcloud app deploy --project='feeder-230308' --promote --stop-previous-version $(OPTIONS)
 
 soft-deploy: installNoDev
-	gcloud app deploy -v 'prod' --project='feeder-230308' --no-promote --no-stop-previous-version $(OPTIONS)
-	@$(MAKE) post-deploy
-
-post-deploy:
-	@echo "\033[1;33mDeploy done.\033[m"
+	gcloud app deploy --project='feeder-230308' --no-promote --no-stop-previous-version $(OPTIONS)
 
 server: installWithDev
 	php -S localhost:8080 -t public/
+
+
+##############################
+
+credential: credential/plurk.php
 
 credential/plurk.php:
 	echo "噗浪功能需要的 credential 檔案 $@ 不存在!" && false
