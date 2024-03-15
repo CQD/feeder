@@ -1,24 +1,21 @@
-.PHONY: deploy installNoDev installWithDev deploy soft-deploy server credential test
+.PHONY: deploy install soft-deploy server credential test
 
 OPTIONS?=
 
-installNoDev: credential
-	-composer install -o --no-dev
+test: install credential
+	vendor/bin/phpunit --color --testdox tests
 
-installWithDev: credential
-	-composer install -o
+install:
+	composer install -o
 
-deploy: installNoDev credential
+deploy: credential
 	gcloud app deploy --project='feeder-230308' --promote --stop-previous-version $(OPTIONS)
 
-soft-deploy: installNoDev
+soft-deploy: credential
 	gcloud app deploy --project='feeder-230308' --no-promote --no-stop-previous-version $(OPTIONS)
 
-server: installWithDev
+server: install credential
 	php -S localhost:8080 -t public/
-
-test: installWithDev
-	vendor/bin/phpunit --color --testdox tests
 
 ##############################
 
