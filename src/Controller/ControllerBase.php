@@ -9,13 +9,14 @@ use SimpleXMLElement;
 abstract class ControllerBase
 {
     protected $httpCache = [];
+    protected $template = 'rss';
 
     public function run($params)
     {
         try {
             $data = $this->logic($params);
             ob_start();
-            include __DIR__ . '/rss_template.php';
+            include __DIR__ . "/template_{$this->template}.php";
             $body = ob_get_clean();
 
             header("ETag: " . md5($body));
