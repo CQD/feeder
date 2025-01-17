@@ -32,6 +32,7 @@ class Router
             '/tepa/epaper'  => 'TepaEpaperController',
             '/ptt/{board}/title/{regex}'  => 'PttTitleController',
             '/591/comu/{id}'  => 'FiveNineOneSaleController',
+            '/ndai'  => 'NdaiController',
             '/' => 'IndexController',
         ];
     }

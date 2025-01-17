@@ -5,6 +5,12 @@
 - 服務網址：https://feed.cqd.tw
 - 程式碼：https://github.com/CQD/feeder
 
+## NewsDigest.ai
+
+- `/ndai`
+  - 原網頁依照類別分開，這裡全部放在一起
+  - 範例：`https://feed.cqd.tw/ndai`
+
 ## PTT
 - `/ptt/{看板_ID}/title/{regex}`
   - 看板文章依照 regex 過濾標題，無視大小寫
